@@ -28,7 +28,44 @@
 
 ---
 
-<!--PASO2-->
+## Paso 2: El peligro de la explosión combinatoria
+
+### Cálculo
+
+Cada parámetro tiene 3 valores y hay 5 parámetros, por lo tanto:
+
+```
+v1 × v2 × v3 × v4 × v5 = 3 × 3 × 3 × 3 × 3 = 3^5
+```
+
+### Demostración paso a paso
+
+```
+3^2 = 3 × 3     = 9
+3^3 = 9 × 3     = 27
+3^4 = 27 × 3    = 81
+3^5 = 81 × 3    = 243
+```
+
+**Total de combinaciones puras = 243.**
+
+### Costo de la prueba exhaustiva
+
+Si ejecutar y verificar cada prueba toma 15 minutos:
+
+```
+243 × 15 min = 3.645 min = 60,75 horas ≈ 7,6 jornadas de 8 horas
+```
+
+La suite All-Pairs de este documento tiene 11 casos:
+
+```
+11 × 15 min = 165 min = 2,75 horas
+```
+
+### Conclusión
+
+La prueba exhaustiva exige más de una semana laboral completa de una persona (≈ 61 horas) para un configurador de solo 5 parámetros, y el costo crece exponencialmente con cada parámetro nuevo; por eso es financieramente inviable frente a las ≈ 2,75 horas de la suite All-Pairs, que mantiene la cobertura de las interacciones que concentran la mayoría de los defectos.
 
 ---
 
