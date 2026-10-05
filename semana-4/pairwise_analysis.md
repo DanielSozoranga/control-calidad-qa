@@ -179,3 +179,34 @@ Se regeneró la suite partiendo únicamente de las **99 configuraciones válidas
 | TC-11 | Gasolina | Automática | ABS | Asia | Eco |
 
 **Verificación:** las 11 filas cumplen las 3 reglas y cubren el **100 % (81/81)** de los pares válidos.
+
+---
+
+## Protocolo Pre-Commit (autoevaluación)
+
+- [x] ¿La Matriz P&V define los 5 parámetros y sus variables discretas?
+- [x] ¿Se calculó y justificó el límite de la explosión combinatoria (3^5)?
+- [x] ¿La suite All-Pairs fue generada y listada correctamente?
+- [x] ¿Las reglas formales de exclusión (constraints) reflejan el caso de negocio?
+
+---
+
+## Cierre cognitivo (preguntas de transferencia)
+
+### Pregunta 1 (Transferencia)
+
+**¿Qué riesgo financiero y operativo corremos si ignoramos los constraints lógicos y enviamos la matriz matemática pura directamente al equipo de automatización (QA)?**
+
+En este mismo taller, 6 de los 11 casos de la suite pura (55 %) describen vehículos que no se pueden fabricar, como un motor de gasolina con frenos regenerativos. Si se envían tal cual a automatización, esos scripts fallarán por una configuración inexistente y no por un defecto real: el equipo gasta horas escribiendo, ejecutando y depurando pruebas inválidas, los reportes se llenan de falsos positivos que ocultan los defectos genuinos y se pierde la confianza en la suite. En el peor caso, el configurador aceptaría combinaciones imposibles y enviaría a la línea de ensamblaje pedidos que no se pueden construir, lo que genera retrabajo, devoluciones y retrasos de entrega en un lanzamiento global donde cada fallo cuesta millones. Modelar las restricciones antes de generar la suite evita ese costo.
+
+### Pregunta 2 (Elaboración)
+
+**¿Por qué la técnica All-Pairs es matemáticamente y empíricamente superior a que un tester diseñe 20 casos de prueba basándose únicamente en su intuición?**
+
+Matemáticamente, All-Pairs ofrece una garantía verificable: con solo 11 casos cubre el 100 % de los 90 pares de valores posibles, y esa cobertura se puede demostrar y medir, mientras que 20 casos elegidos por intuición normalmente repiten combinaciones "típicas" y dejan pares sin cubrir sin que nadie lo note; además, con 11 casos ya supera en eficiencia a los 20 casos manuales. Empíricamente, los estudios del NIST muestran que la mayoría de los fallos de software son causados por la interacción de uno o dos parámetros, por lo que cubrir todos los pares atrapa el grueso de los defectos críticos con un costo mínimo. La intuición, en cambio, es sesgada, no es reproducible entre testers y no se puede auditar, mientras que All-Pairs es sistemático, repetible y deja evidencia de cobertura.
+
+---
+
+## Nota sobre herramientas
+
+La suite fue generada con un script propio (algoritmo voraz en Python) y su cobertura fue verificada por programa. Los resultados son equivalentes a los de herramientas de derivación como **PICT** o **NIST ACTS**, que también emplean heurísticas para t = 2.
