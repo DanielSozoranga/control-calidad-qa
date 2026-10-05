@@ -69,7 +69,55 @@ La prueba exhaustiva exige más de una semana laboral completa de una persona (�
 
 ---
 
-<!--PASO3-->
+## Paso 3: Derivación de la suite All-Pairs (t = 2)
+
+### Método
+
+Se generó la suite con un **algoritmo voraz (greedy)**: del conjunto de las 243 combinaciones se elige repetidamente la fila que cubre más pares aún no cubiertos, hasta cubrirlos todos. Se repitió con 3.000 semillas aleatorias y se conservó la suite más corta. Después se **verificó por programa** que cada par esté cubierto al menos una vez.
+
+### Tamaño del problema
+
+- Pares de columnas: C(5,2) = **10**
+- Pares de valores por cada par de columnas: 3 × 3 = **9**
+- Pares a cubrir en total: 10 × 9 = **90**
+
+Cada fila cubre 10 pares, así que el mínimo teórico sería 90 / 10 = 9 filas. Para 5 parámetros de 3 valores no existe una cobertura de 9 filas; el mínimo conocido es **11**, que es lo que se obtuvo.
+
+### Suite reducida (sin restricciones, matemáticamente pura)
+
+| Test Case | Motor | Transmisión | Frenos | Mercado | Modo |
+|-----------|-------|-------------|--------|---------|------|
+| TC-01 | Eléctrico | Manual | Regenerativo | Europa | Sport |
+| TC-02 | Gasolina | Automática | ABS | América | Sport |
+| TC-03 | Gasolina | Monomarcha | Estándar | Europa | Autónomo |
+| TC-04 | Híbrido | Automática | Regenerativo | Asia | Autónomo |
+| TC-05 | Eléctrico | Monomarcha | ABS | Asia | Eco |
+| TC-06 | Híbrido | Manual | Estándar | América | Eco |
+| TC-07 | Gasolina | Automática | Regenerativo | Europa | Eco |
+| TC-08 | Eléctrico | Automática | Estándar | América | Autónomo |
+| TC-09 | Híbrido | Monomarcha | Regenerativo | América | Sport |
+| TC-10 | Híbrido | Manual | ABS | Europa | Autónomo |
+| TC-11 | Gasolina | Manual | Estándar | Asia | Sport |
+
+**Reducción: de 243 a 11 casos (-95,5 %).**
+
+### Verificación de ortogonalidad (t = 2)
+
+Se comprobó cada una de las 10 parejas de columnas: las **9 combinaciones posibles están presentes** al menos una vez en las filas.
+
+| Pareja de columnas | Combinaciones cubiertas |
+|--------------------|-------------------------|
+| Motor - Transmisión | 9 / 9 |
+| Motor - Frenos | 9 / 9 |
+| Motor - Mercado | 9 / 9 |
+| Motor - Modo | 9 / 9 |
+| Transmisión - Frenos | 9 / 9 |
+| Transmisión - Mercado | 9 / 9 |
+| Transmisión - Modo | 9 / 9 |
+| Frenos - Mercado | 9 / 9 |
+| Frenos - Modo | 9 / 9 |
+| Mercado - Modo | 9 / 9 |
+| **Total** | **90 / 90 (100 %)** |
 
 ---
 
