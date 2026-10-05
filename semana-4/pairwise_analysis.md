@@ -4,9 +4,9 @@
 
 | Rol | Integrante |
 |---|---|
-| Analista de Modelado | _(nombre)_ |
-| Tester Combinatorio | _(nombre)_ |
-| Documentador / Git Lead | _(nombre)_ |
+| Analista de Modelado | Daniel Sozoranga |
+| Tester Combinatorio | Ricardo Alvarez |
+| Documentador / Git Lead | Daniel Sozoranga |
 
 ---
 
