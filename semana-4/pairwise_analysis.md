@@ -204,9 +204,3 @@ En este mismo taller, 6 de los 11 casos de la suite pura (55 %) describen vehíc
 **¿Por qué la técnica All-Pairs es matemáticamente y empíricamente superior a que un tester diseñe 20 casos de prueba basándose únicamente en su intuición?**
 
 Matemáticamente, All-Pairs ofrece una garantía verificable: con solo 11 casos cubre el 100 % de los 90 pares de valores posibles, y esa cobertura se puede demostrar y medir, mientras que 20 casos elegidos por intuición normalmente repiten combinaciones "típicas" y dejan pares sin cubrir sin que nadie lo note; además, con 11 casos ya supera en eficiencia a los 20 casos manuales. Empíricamente, los estudios del NIST muestran que la mayoría de los fallos de software son causados por la interacción de uno o dos parámetros, por lo que cubrir todos los pares atrapa el grueso de los defectos críticos con un costo mínimo. La intuición, en cambio, es sesgada, no es reproducible entre testers y no se puede auditar, mientras que All-Pairs es sistemático, repetible y deja evidencia de cobertura.
-
----
-
-## Nota sobre herramientas
-
-La suite fue generada con un script propio (algoritmo voraz en Python) y su cobertura fue verificada por programa. Los resultados son equivalentes a los de herramientas de derivación como **PICT** o **NIST ACTS**, que también emplean heurísticas para t = 2.
